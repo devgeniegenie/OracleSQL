@@ -1,0 +1,17 @@
+--REPLACE, TRANSLATE 비교
+SELECT REPLACE('나는 너를 모르는데 너는 나를 알겠는가?', '나는', '너를')   AS REPLACE,
+       TRANSLATE('나는 너를 모르는데 너는 나를 알겠는가?', '나는', '너를') AS TRANSLATE
+FROM DUAL;
+
+--날짜함수
+SELECT SYSDATE, SYSTIMESTAMP
+FROM DUAL;
+
+SELECT LAST_DAY(SYSDATE)
+FROM DUAL;
+
+SELECT NEXT_DAY(SYSDATE, '금요일')
+FROM DUAL;
+
+--NULL관련 함수
+--NVL
