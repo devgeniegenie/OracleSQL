@@ -13,5 +13,26 @@ FROM DUAL;
 SELECT NEXT_DAY(SYSDATE, '금요일')
 FROM DUAL;
 
+
 --NULL관련 함수
---NVL
+
+--NVL(expr1, expr2), NVL2(expr1, expr2, expr3)
+SELECT NVL(manager_id, employee_id)
+FROM employees
+WHERE manager_id IS NULL;
+-- COALESCE(expr1, expr2, ...)
+SELECT employee_id, salary, COMMISSION_PCT, COALESCE(salary * COMMISSION_PCT, SALARY) AS salary2
+FROM EMPLOYEES;
+--LNNVL : 매개변수로 들어오는 조건의 결과가 TRUE이면 FALSE, FALSE나 UNKNOWN이면 TRUE를 반환하므로 조건을 반대로 줌
+SELECT COUNT(*)
+FROM EMPLOYEES
+WHERE LNNVL(COMMISSION_PCT >= 0.2); --(commission_pct < 0.2)
+--NULLIF(expr1, expr2) : expr1과 expr2가 같으면 NULL, 같지 않으면 expr1 반환
+SELECT EMPLOYEE_ID,
+       TO_CHAR(start_date, 'yyyy')                                    start_year,
+       TO_CHAR(end_date, 'yyyy')                                      end_year,
+       NULLIF(TO_CHAR(end_date, 'yyyy'), TO_CHAR(start_date, 'yyyy')) nullif_year
+FROM JOB_HISTORY;
+
+
+--
