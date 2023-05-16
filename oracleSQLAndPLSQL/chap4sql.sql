@@ -35,4 +35,7 @@ SELECT EMPLOYEE_ID,
 FROM JOB_HISTORY;
 
 
---
+--기타 함수
+SELECT GREATEST(1, 2, 3, 4),
+       LEAST(1, 2, 3, 4)
+FROM DUAL;
