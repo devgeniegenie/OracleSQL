@@ -1,4 +1,4 @@
---PL/SQL ?? ??
+--PL/SQL 기본 구조
 --sqlplus
 SET SERVEROUTPUT ON
 DECLARE
@@ -74,13 +74,13 @@ DECLARE
     vs_sql_vharchar2   varchar2(4000);
     vs_plsql_vharchar2 varchar2(32767);
 BEGIN
-    --ch08_varchar2 ???? ?? ??? ??
+    --ch08_varchar2 테이블의 값을 변수에 담음
     SELECT VAR1 into vs_sql_vharchar2 FROM ch08_varchar2;
 
-    --PL/SQL ??? 4000BYTE ?? ??? ?? ??
+    --PL/SQL 변수에 4000BYTE 이상 크기의 값을 넣음
     vs_plsql_vharchar2 := vs_sql_vharchar2 || ' - ' || vs_sql_vharchar2 || ' - ' || vs_sql_vharchar2;
 
-    DBMS_OUTPUT.PUT_LINE('SQL_VARCHAR2 ?? : ' || LENGTHB(vs_sql_vharchar2));
-    DBMS_OUTPUT.PUT_LINE('PL_SQL VARCHAR2 ?? : ' || LENGTHB(vs_plsql_vharchar2));
+    DBMS_OUTPUT.PUT_LINE('SQL_VARCHAR2 길이 : ' || LENGTHB(vs_sql_vharchar2));
+    DBMS_OUTPUT.PUT_LINE('PL_SQL VARCHAR2 길이 : ' || LENGTHB(vs_plsql_vharchar2));
 END;
 /
